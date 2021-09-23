@@ -47,10 +47,18 @@ const TheAvatar = ({name}) => {
 }
 
 const removeStudent = (studentId, callback) => {
-    deleteStudent(studentId).then(() => {
-        successNotification( "Student deleted", `Student with id ${studentId} was deleted`);
+    deleteStudent(7889798).then(() => {
+        successNotification("Student deleted", `Student with ${studentId} was deleted`);
         callback();
-    });
+    }).catch(err => {
+        err.response.json().then(res => {
+            console.log(res);
+            errorNotification(
+                "There was an issue",
+                `${res.message} [${res.status}] [${res.error}]`
+            )
+        });
+    })
 }
 
 const columns = fetchStudents => [
@@ -113,8 +121,16 @@ function App() {
             .then(data => {
                 console.log(data);
                 setStudents(data);
-                setFetching(false);
-            })
+            }).catch(err => {
+            console.log(err.response)
+            err.response.json().then(res => {
+                console.log(res);
+                errorNotification(
+                    "There was an issue",
+                    `${res.message} [${res.status}] [${res.error}]`
+                )
+            });
+        }).finally(() => setFetching(false))
 
     useEffect(() => {
         console.log("component is mounted");
@@ -193,7 +209,7 @@ function App() {
                     {renderStudents()}
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>GrobKar</Footer>
+            <Footer style={{textAlign: 'center'}}>By Amigoscode</Footer>
         </Layout>
     </Layout>
 }
