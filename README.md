@@ -1,0 +1,2 @@
+# WebDiary
+WebDiary play Project
