@@ -47,7 +47,7 @@ const TheAvatar = ({name}) => {
 }
 
 const removeStudent = (studentId, callback) => {
-    deleteStudent(7889798).then(() => {
+    deleteStudent(studentId).then(() => {
         successNotification("Student deleted", `Student with ${studentId} was deleted`);
         callback();
     }).catch(err => {
@@ -185,13 +185,13 @@ function App() {
                     Option 2
                 </Menu.Item>
                 <SubMenu key="sub1" icon={<UserOutlined/>} title="User">
-                    <Menu.Item key="3">Tom</Menu.Item>
-                    <Menu.Item key="4">Bill</Menu.Item>
-                    <Menu.Item key="5">Alex</Menu.Item>
+                    <Menu.Item key="3">Grade 1</Menu.Item>
+                    <Menu.Item key="4">Grade 2</Menu.Item>
+                    <Menu.Item key="5">Grade 3</Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub2" icon={<TeamOutlined/>} title="Team">
-                    <Menu.Item key="6">Team 1</Menu.Item>
-                    <Menu.Item key="8">Team 2</Menu.Item>
+                    <Menu.Item key="6">Test 1</Menu.Item>
+                    <Menu.Item key="8">Test 2</Menu.Item>
                 </SubMenu>
                 <Menu.Item key="9" icon={<FileOutlined/>}>
                     Files
@@ -202,14 +202,14 @@ function App() {
             <Header className="site-layout-background" style={{padding: 0}}/>
             <Content style={{margin: '0 16px'}}>
                 <Breadcrumb style={{margin: '16px 0'}}>
-                    <Breadcrumb.Item>User</Breadcrumb.Item>
-                    <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                    <Breadcrumb.Item>Subject</Breadcrumb.Item>
+                    <Breadcrumb.Item>Mathematics</Breadcrumb.Item>
                 </Breadcrumb>
                 <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
                     {renderStudents()}
                 </div>
             </Content>
-            <Footer style={{textAlign: 'center'}}>By Amigoscode</Footer>
+            <Footer style={{textAlign: 'center'}}>Karol Groblicki</Footer>
         </Layout>
     </Layout>
 }
